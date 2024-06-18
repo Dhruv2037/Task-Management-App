@@ -5,9 +5,12 @@ require('dotenv').config();
 
 exports.register = async(req,res) =>{
     const {name,email,password} = req.body;
+    console.log(req.body);
     try {
-        let user = User.findOne({email});
-        if(user) return res.status(400).json({ msg: 'User already exists' });
+        let user = await User.findOne({email});
+        console.log(user);
+        if(user)
+            { return res.status(400).json({ msg: 'User already exists' });}
 
         user = new User({name,email,password});
         await user.save();
@@ -18,7 +21,7 @@ exports.register = async(req,res) =>{
             res.json({token});
         });
     } catch (error) {
-        console.error(err.message);
+        console.error(error.message);
         res.status(500).send('Server error');
     }
 }
@@ -26,7 +29,7 @@ exports.register = async(req,res) =>{
     exports.login = async(req,res)=>{
         const {email,password} = req.body;
         try {
-            let user = User.findOne({email});
+            let user = await User.findOne({email});
             if(!user) return res.status(400).json({msg:'Invalid Credentials'});
             
             const isMatch = await bcrypt.compare(password,user.password);
@@ -37,7 +40,7 @@ exports.register = async(req,res) =>{
                 res.json({ token });
             });
         } catch (error) {
-            console.error(err.message);
+            console.error(error.message);
             res.status(500).send('Server error');
         }
     };
