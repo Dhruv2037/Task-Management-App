@@ -34,14 +34,15 @@ git clone https://https://github.com/Dhruv2037/Task-Management-App.git
 npm install
 
 For the Frontend
-Navigate to the frontend directory and install dependencies:
+Navigate to the task-manager-client directory and install dependencies:
 cd task-manager-client
+npm install
 
 Running the Application
 
 1. Start the Backend Server
-Ensure MongoDB is running on your machine. If you are using MongoDB Atlas or a remote MongoDB instance, update the connection string in your backend configuration.
-
+Ensure MongoDB is running on your machine. If you are using MongoDB Atlas or a remote MongoDB instance, 
+update the connection string in your backend configuration.
 
 cd server
 npm start
