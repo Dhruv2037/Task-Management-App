@@ -15,7 +15,7 @@ This Task Management Application is built with React and Material-UI for the fro
 
 - React
 - Material-UI
-- Axios
+- fetch
 - Node.js (backend)
 - Express (backend)
 - MongoDB (database)
